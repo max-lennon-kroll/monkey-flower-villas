@@ -1,0 +1,254 @@
+@font-face {
+  font-family: 'Lexend';
+  src: url('/media/fonts/Lexend/Lexend-VariableFont_wght.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+}
+
+:root {
+    color: black;
+    font-family: "Lexend", sans-serif;
+
+    
+    --contents-spacing: 15px;
+    --contents-color: rgb(0, 0, 0);
+    --contents-width: 300px;
+
+    
+    --image-gap: 10px;
+    --image-grid-margin: 10px;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: rgb(232, 232, 232);
+    overflow-x: hidden;
+    margin-left: var(--contents-width);
+}
+
+h1 {
+    font-size: 30px;
+    font-weight: 500;
+    margin: 20px;
+}
+
+
+.gallery-description {
+    color: #333;
+    font-size: calc(0.2vw + 15px);
+    font-weight: 400;
+    margin: 10px;
+    margin-left: 20px;
+}
+
+
+.table-of-contents {
+    display: flex;
+    flex-direction: column;
+
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: calc(var(--contents-width) - 100px);
+    gap: var(--contents-spacing);
+
+    background-color: white;
+    color: var(--contents-color);
+    box-shadow: 0 0 10px rgba(0 0, 0, 0.3);
+    padding: 50px;
+    text-align: center;
+}
+
+.table-of-contents-header, .table-of-contents-item, .table-of-contents-title {
+    margin: 0;
+    text-align: center;
+}
+
+.table-of-contents-title {
+    font-size: 19px;
+    font-weight: 700;
+}
+
+.table-of-contents-header {
+    font-size: 18px;
+    font-weight: 500;
+    margin-top: calc(2vh);
+}
+
+.table-of-contents-item {
+    font-size: 16px;
+    font-weight: 300;
+}
+
+
+#exit-button {
+    margin-top: auto;
+    margin-bottom: 100px;
+
+    text-align: center;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+@media (max-width: 800px), (max-height: 780px) {
+    .table-of-contents, .table-of-contents-item {
+        display: none;
+    }
+
+    body {
+        margin-left: 0;
+    }
+}
+
+hr {
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+
+    background: center bottom linear-gradient(black, black) no-repeat;
+    background-size: 0% 2px;
+    transition: background-size 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+    user-select: none;
+}
+
+a:hover {
+    background-size: 80% 2px;
+}
+
+
+section {
+    margin-bottom: 100px;
+}
+
+.section-title {
+    font-size: 28px;
+    font-weight: 600;
+    color: #000000;
+    text-align: center;
+    margin-top: 30px;
+}
+
+
+.section-subtitle {
+    font-size: 20px;
+    font-weight: 400;
+    color: #000000;
+    text-align: center;
+}
+
+
+.section-header {
+    font-size: 25px;
+    font-weight: 400;
+    color: #333;
+    margin-left: 20px;
+}
+
+
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: minmax(200px, auto);
+  gap: var(--image-gap);
+  margin-left: var(--image-grid-margin);
+  margin-right: var(--image-grid-margin);
+  user-select: none;
+}
+
+.image-grid img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+}
+
+.span-2 {
+  grid-column: span 2;
+}
+
+#lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  cursor: zoom-out;
+  user-select: none;
+}
+
+#lightbox img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  user-select: none;
+  border-radius: 10px;
+  box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.5);
+}
+
+
+#corner-exit-button {
+    position: fixed;
+    width: 35px;
+    height: 35px;
+    top: 10px;
+    right: 10px;
+    padding: 7px;
+
+    background-color: white;
+    background-image: url("/media/svgs/cross.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 60%;
+
+    color: black;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 0 10px 0 rgb(0, 0, 0, 0.5);
+
+    transition: scale 0.4s cubic-bezier(0.175, 0.885, 0.32, 2.3);
+}
+
+#corner-exit-button:hover {
+    scale: 1.1;
+}
+
+
+#return-top-button {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+
+.gallery-redirect-button {
+  display: block;
+  width: fit-content;
+  margin: -40px auto 100px auto;
+  padding: 15px 30px;
+  background-color: black;
+  background-image: none;
+  color: white;
+  font-size: calc(0.8rem + 0.2vw);
+  font-weight: 200;
+  letter-spacing: 3px;
+  text-align: center;
+  text-decoration: none;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+  transition: background-color 0.3s ease-out, color 0.3s ease-out;
+}
+
+.gallery-redirect-button:hover {
+  background-color: white;
+  background-image: none;
+  color: black;
+}

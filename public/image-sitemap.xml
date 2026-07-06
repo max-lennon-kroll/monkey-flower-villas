@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://kotaovilla.com/</loc>
+    <image:image>
+      <image:loc>https://kotaovilla.com/media/images/homepage/hero-image.webp</image:loc>
+      <image:title>Monkey Flower Villas Koh Tao</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://kotaovilla.com/media/images/banners/orchid-villa-banner.webp</image:loc>
+      <image:title>The Orchid Villa</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://kotaovilla.com/media/images/banners/gardenia-villa-banner.webp</image:loc>
+      <image:title>The Gardenia Villa</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://kotaovilla.com/media/images/banners/bougainvillea-villa-banner.webp</image:loc>
+      <image:title>The Bougainvillea Villa</image:title>
+    </image:image>
+  </url>
+</urlset>
