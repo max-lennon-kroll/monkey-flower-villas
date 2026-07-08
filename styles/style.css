@@ -59,6 +59,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
 }
 
 body {
@@ -1349,61 +1350,6 @@ section.footer-section {
 
 
 
-body.js-animate-ready h2.slide-header,
-body.js-animate-ready h3.slide-description,
-body.js-animate-ready h4.slide-description,
-body.js-animate-ready .animated {
-  color: transparent;
-}
-
-h2.slide-header.animate-text {
-  animation: 
-    rise-anim 0.8s cubic-bezier(0, 1, 1, 1) forwards,
-    outline-anim-white 0.6s ease-out forwards,
-    fill-anim 0.6s ease-out 0.4s forwards;
-}
-
-h2.slide-header.animate-text.black {
-  animation: 
-    rise-anim 0.8s cubic-bezier(0, 1, 1, 1) forwards,
-    outline-anim-black 0.6s ease-out forwards,
-    fill-anim 0.6s ease-out 0.4s forwards;
-}
-
-.animated.animate-text,
-h3.slide-description.animate-text,
-div.slide-description.animate-text {
-  animation: 
-    fill-anim 1s ease-in-out forwards, 
-    rise-anim 0.8s cubic-bezier(0, 1, 1, 1) forwards;
-}
-
-h4.slide-description.animate-text {
-  animation: fill-anim 2s ease-in-out forwards;
-}
-
-@keyframes rise-anim {
-  0% { transform: translateY(3rem); }
-  100% { transform: translateY(0); }
-}
-
-@keyframes fill-anim {
-  0% { color: transparent; }
-  100% { color: inherit; }
-}
-
-@keyframes outline-anim-white {
-  0% { -webkit-text-stroke: 1px transparent; }
-  100% { -webkit-text-stroke: 1px white; }
-}
-
-@keyframes outline-anim-black {
-  0% { -webkit-text-stroke: 1px transparent; }
-  100% { -webkit-text-stroke: 1px black; }
-}
-
-
-
 .map-container-large {
   position: relative;
   width: 100%;
@@ -1453,6 +1399,8 @@ h4.slide-description.animate-text {
 
 
 .popup {
+  box-sizing: border-box;
+  min-height: 250px;
   position: fixed;
   left: 20px;
   bottom: 20px;
@@ -1467,6 +1415,7 @@ h4.slide-description.animate-text {
 
 .popup-header {
   font-size: 18px;
+  line-height: 1.4;
   font-weight: 400;
   color: black;
   margin: 0;
@@ -1474,6 +1423,7 @@ h4.slide-description.animate-text {
 
 .popup-description {
   font-size: 16px;
+  line-height: 1.5;
   font-weight: 200;
   color: black;
   margin-top: 20px;

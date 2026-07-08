@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     
   initializeHeader();
-  initializeAnimations();
   initializeParallax();
   initializeSlideNavigation();
   initializeReviews();
@@ -17,16 +16,20 @@ function initializeHeader() {
 
   if (!hamburger || !mobileMenu || !exitBtn || !navMenu) return;
 
+  let isMobileMenuOpen = false;
+
   const toggleMenu = (show) => {
     document.body.style.overflow = show ? 'hidden' : 'auto';
-    
+
     if (show) {
+      isMobileMenuOpen = true;
       navMenu.style.opacity = '0';
       navMenu.style.pointerEvents = 'none';
       mobileMenu.style.display = 'flex';
       exitBtn.style.display = 'block';
       setTimeout(() => { mobileMenu.style.opacity = '1'; exitBtn.style.opacity = '1'; }, 10);
     } else {
+      isMobileMenuOpen = false;
       mobileMenu.style.opacity = '0';
       exitBtn.style.opacity = '0';
       setTimeout(() => {
@@ -45,13 +48,13 @@ function initializeHeader() {
   exitBtn.addEventListener('click', () => toggleMenu(false));
 
   let lastScroll = 0;
+  let lastScrollY = 0;
   const tolerance = 10;
-  
-  const handleScroll = () => {
-    if (mobileMenu.style.display === 'flex') return;
-    
-    const currentScroll = window.scrollY;
+  let ticking = false;
 
+  const updateScroll = (currentScroll) => {
+    if (isMobileMenuOpen) return;
+    
     if (currentScroll <= 0) {
       navMenu.classList.remove('nav-menu-hidden');
       navMenu.style.pointerEvents = 'auto';
@@ -71,24 +74,20 @@ function initializeHeader() {
     lastScroll = currentScroll;
   };
   
+  const handleScroll = () => {
+    lastScrollY = window.scrollY;
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        updateScroll(lastScrollY);
+        ticking = false;
+      });
+      ticking = true;
+    }
+  };
+  
   window.addEventListener('scroll', handleScroll, { passive: true });
 }
 
-function initializeAnimations() {
-  document.body.classList.add('js-animate-ready');
-  
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      const targets = entry.target.querySelectorAll('.slide-header, .slide-description, .animated');
-      targets.forEach(el => {
-        
-         el.classList.toggle('animate-text', entry.isIntersecting);
-      });
-    });
-  }, { threshold: 0.001 });
-
-  document.querySelectorAll('.slide, .long-slide').forEach(slide => observer.observe(slide));
-}
 
 function initializeParallax() {
   const sections = document.querySelectorAll('section');

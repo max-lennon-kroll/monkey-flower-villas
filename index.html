@@ -5,6 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Monkey Flower Villas | Luxury Private Pool Villas in Koh Tao, Thailand</title>
+  <link rel="icon" type="image/webp" href="/media/images/logos/monkey-flower-villas-logo-mini.webp" />
   <meta name="description" content="Stay at the premier Koh Tao Luxury Villas. Monkey Flower offers exclusive private pool villas with nature-integrated designs, stunning ocean views, and 24/7 service.">
   <meta name="author" content="Monkey Flower Villas">
   <meta name="robots" content="index, follow">
@@ -25,8 +26,8 @@
   <meta property="twitter:image" content="https://kotaovilla.com/media/images/scenery/entire-luxury-resort-drone-shot.webp" />
   
   
-  <link rel="preload" href="/styles/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="/styles/style.css"></noscript>
+  <link rel="stylesheet" href="/styles/style.css">
+  
 
   
   <script type="application/ld+json">
@@ -50,12 +51,6 @@
 
   <link rel="preload" as="image" href="/media/images/scenery/entire-luxury-resort-drone-shot.webp">
 
-  <style>
-    html {
-      scroll-snap-type: y mandatory;
-    }
-  </style>
-  
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-D87H9ECPYQ"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -102,7 +97,7 @@
     </div>
 
     <div class="nav-menu-container">
-      <img src="/media/images/logos/monkey-flower-villas-logo-small.png" width="90" height="90" class="nav-menu-logo" onclick="window.location.href='/index.html';" alt="Monkey Flower Villas Logo">
+      <img src="/media/images/logos/monkey-flower-villas-logo-small.webp" width="90" height="90" class="nav-menu-logo" onclick="window.location.href='/index.html';" alt="Monkey Flower Villas Logo">
       <div class="nav-menu-spacer"></div>
       <a href="/index.html" class="nav-menu-item">HOME</a>
       <div class="nav-menu-item">OUR VILLAS
@@ -134,33 +129,6 @@
   <main>
 
     
-    <div class="popup" id="popup">
-      <div class="popup-content">
-        <p class="popup-header">Book Direct | Guaranteed Best Rate!</p>
-        <p class="popup-description">
-          Use the code <b>DIRECT10</b> (all caps) to get an instant 10% discount off our already low rates, for any villa!
-        </p>
-        <a class="popup-button" href="/booking.html">Book Now</a>
-        <img class="popup-exit" id="popupClose" src="media/svgs/cross.svg" alt="Close Popup Button" width="800" height="800">
-      </div>
-    </div>
-
-    <script>
-      const popup = document.getElementById("popup");
-      const closeBtn = document.getElementById("popupClose");
-
-      // Close when clicking the X
-      closeBtn.addEventListener("click", () => {
-        popup.style.display = "none";
-      });
-
-      // Close only if clicking outside the content
-      popup.addEventListener("click", (e) => {
-        if (!e.target.closest(".popup-content")) {
-          popup.style.display = "none";
-        }
-      });
-    </script>
 
     
     <section aria-label="Welcome">
@@ -489,7 +457,7 @@
       <footer id="footer">
         <div class="footer-container">
           <div class="footer-item">
-            <img class="footer-logo" src="/media/images/logos/tripadvisor-logo.png" alt="TripAdvisor Logo" width="462" height="462">
+            <img class="footer-logo" src="/media/images/logos/tripadvisor-logo.webp" alt="TripAdvisor Logo" width="462" height="462">
             <div class="footer-item-title">TRIPADVISOR</div>
             <div class="footer-item-description">WE'VE RECEIVED THE <strong>CERTIFICATE OF EXCELLENCE</strong> 5 YEARS IN A ROW</div>
           </div>
@@ -501,7 +469,7 @@
           </div>
 
           <div class="footer-item">
-            <img class="footer-logo" src="/media/images/logos/monkey-flower-villas-logo.png" alt="Monkey Flower Villas Logo" width="512" height="512">
+            <img class="footer-logo" src="/media/images/logos/monkey-flower-villas-logo.webp" alt="Monkey Flower Villas Logo" width="512" height="512">
             <div class="footer-item-title">LUXURY ACCOMMODATION</div>
             <div class="footer-item-description">19/6 Moo 1, Koh Tao, Thailand</div>
             <div class="footer-item-description">info@kotaovilla.com</div>
@@ -510,6 +478,18 @@
         </div>
       </footer>
     </section>
+  
+    <div class="popup" id="popup">
+      <div class="popup-content">
+        <p class="popup-header">Book Direct | Guaranteed Best Rate!</p>
+        <p class="popup-description">
+          Use the code <b>DIRECT10</b> (all caps) to get an instant 10% discount off our already low rates, for any villa!
+        </p>
+        <a class="popup-button" href="/booking.html">Book Now</a>
+        <img class="popup-exit" id="popupClose" src="/media/svgs/cross.svg" alt="Close Popup Button" width="45" height="45">
+      </div>
+    </div>
+
   </main>
 
   <script src="/scripts/script.js" defer></script>
@@ -519,5 +499,26 @@
       <strong>Warning:</strong> JavaScript is disabled. Some visual effects may not appear.
     </div>
   </noscript>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const popup = document.getElementById("popup");
+      const closeBtn = document.getElementById("popupClose");
+      if (popup && closeBtn) {
+        // Close when clicking the X
+        closeBtn.addEventListener("click", () => {
+          popup.style.display = "none";
+        });
+
+        // Close only if clicking outside the content
+        popup.addEventListener("click", (e) => {
+          if (!e.target.closest(".popup-content")) {
+            popup.style.display = "none";
+          }
+        });
+      }
+    });
+  </script>
+
 </body>
 </html>
