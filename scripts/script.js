@@ -105,43 +105,53 @@ function initializeParallax() {
 
   let ticking = false;
   
-  const update = () => {
+    const update = () => {
     const winWidth = window.innerWidth;
     const winHeight = window.innerHeight;
-
+    
+    // Pass 1: Read all layout properties
+    const reads = [];
     activeSections.forEach(section => {
       const rect = section.getBoundingClientRect();
-      
-     
       if (rect.bottom < 0 || rect.top > winHeight) return;
       const yOffset = rect.top * 0.5;
-
      
       const container = section.querySelector('.slides-container');
       if (!container) return;
       
       const scrollX = container.scrollLeft;
       const slides = container.querySelectorAll('.slide');
-
+      
       slides.forEach(slide => {
-          const relativeLeft = slide.offsetLeft - scrollX;
+          // If we cache slide.offsetLeft and slide.offsetWidth it's even better, but let's just separate reads and writes for now
+          // to prevent layout thrashing within the loop
+          const slideOffsetLeft = slide.offsetLeft;
+          const slideOffsetWidth = slide.offsetWidth;
           
-         
-          if (relativeLeft > winWidth || relativeLeft + slide.offsetWidth < 0) return;
-
-          const xOffset = relativeLeft * 0.5;
-          const txt_layers = slide.querySelectorAll('.slide-content, .slide-text-static, .slide-content-unjustified');
-          const img_layers = slide.querySelectorAll('.slide-video, .slide-image');
-          
-          img_layers.forEach(layer => {
-            layer.style.transform = `translate3d(-50%, -50%, 0) translate3d(${-xOffset}px, ${-yOffset}px, 0)`;
-          });
-
-          txt_layers.forEach(layer => {
-            layer.style.transform = `translate3d(-50%, -50%, 0) translate3d(${-xOffset/1.3}px, ${-yOffset/1.3}px, 0)`;
+          reads.push({
+            slide, yOffset, scrollX, slideOffsetLeft, slideOffsetWidth
           });
       });
     });
+    
+    // Pass 2: Calculate and write
+    reads.forEach(r => {
+      const relativeLeft = r.slideOffsetLeft - r.scrollX;
+      if (relativeLeft > winWidth || relativeLeft + r.slideOffsetWidth < 0) return;
+      
+      const xOffset = relativeLeft * 0.5;
+      
+      const txt_layers = r.slide.querySelectorAll('.slide-content, .slide-text-static, .slide-content-unjustified');
+      const img_layers = r.slide.querySelectorAll('.slide-video, .slide-image');
+      
+      img_layers.forEach(layer => {
+        layer.style.transform = `translate3d(-50%, -50%, 0) translate3d(${-xOffset}px, ${-r.yOffset}px, 0)`;
+      });
+      txt_layers.forEach(layer => {
+        layer.style.transform = `translate3d(-50%, -50%, 0) translate3d(${-xOffset/1.3}px, ${-r.yOffset/1.3}px, 0)`;
+      });
+    });
+    
     ticking = false;
   };
 
