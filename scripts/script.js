@@ -200,8 +200,10 @@ function initializeSlideNavigation() {
       const isAtStart = container.scrollLeft <= 5;
       const isAtEnd = Math.ceil(container.scrollLeft + container.clientWidth) >= container.scrollWidth - 5;
       
-      leftBtn.classList.toggle('hidden', isAtStart);
-      rightBtn.classList.toggle('hidden', isAtEnd);
+      requestAnimationFrame(() => {
+        leftBtn.classList.toggle('hidden', isAtStart);
+        rightBtn.classList.toggle('hidden', isAtEnd);
+      });
     };
 
     container.addEventListener('scroll', updateVisibility, { passive: true });

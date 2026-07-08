@@ -52,7 +52,8 @@
   }
   </script>
 
-  <link rel="preload" as="image" href="/media/images/scenery/entire-luxury-resort-drone-shot.webp" fetchpriority="high">
+  <link rel="preload" as="image" href="/media/images/scenery/entire-luxury-resort-drone-shot.webp" media="(min-width: 769px)" fetchpriority="high">
+  <link rel="preload" as="image" href="/media/images/scenery/entire-luxury-resort-drone-shot-mobile.webp" media="(max-width: 768px)" fetchpriority="high">
 
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-D87H9ECPYQ"></script>
   <script>
@@ -100,7 +101,7 @@
     </div>
 
     <div class="nav-menu-container">
-      <img src="/media/images/logos/monkey-flower-villas-logo-small.webp" width="90" height="90" class="nav-menu-logo" onclick="window.location.href='/index.html';" alt="Monkey Flower Villas Logo">
+      <img src="/media/images/logos/monkey-flower-villas-logo-small.webp" width="90" height="90" srcset="/media/images/logos/monkey-flower-villas-logo-mini.webp 90w, /media/images/logos/monkey-flower-villas-logo-small.webp 180w" sizes="90px" class="nav-menu-logo" onclick="window.location.href='/index.html';" alt="Monkey Flower Villas Logo" decoding="async">
       <div class="nav-menu-spacer"></div>
       <a href="/index.html" class="nav-menu-item">HOME</a>
       <div class="nav-menu-item">OUR VILLAS
@@ -146,10 +147,19 @@
           </div>
 
           
-          <video id="hero-video" class="slide-video" width="1920" height="1080" autoplay loop muted playsinline preload="auto" poster="/media/images/scenery/entire-luxury-resort-drone-shot.webp">
-            <source src="/media/videos/homepage/trailer-mobile.mp4" type="video/mp4" media="(max-width: 768px)">
-            <source src="/media/videos/homepage/trailer.mp4" type="video/mp4">
+          <picture class="slide-video">
+            <source media="(max-width: 768px)" srcset="/media/images/scenery/entire-luxury-resort-drone-shot-mobile.webp">
+            <source media="(min-width: 769px)" srcset="/media/images/scenery/entire-luxury-resort-drone-shot.webp">
+            <img src="/media/images/scenery/entire-luxury-resort-drone-shot.webp" alt="Monkey Flower Villas Aerial View" width="1920" height="1080" fetchpriority="high" style="object-fit: cover; width: 100%; height: 100%;">
+          </picture>
+          <video id="hero-video" class="slide-video desktop-only" width="1920" height="1080" autoplay loop muted playsinline preload="auto">
+            <source src="/media/videos/homepage/trailer.mp4" type="video/mp4" media="(min-width: 769px)">
           </video>
+          <style>
+            @media (max-width: 768px) {
+              .desktop-only { display: none !important; }
+            }
+          </style>
         
           <a class="slide-button" href="/booking.html">Book Now</a>
         </div>
@@ -205,7 +215,11 @@
     <section aria-label="Our Villas">
       <div class="slides-container">
         <div class="slide" id="gardenia-villa-slide">
-          <img class="slide-image" width="822" height="507" loading="lazy" src="/media/images/hero-images/gardenia-villa-hero.webp" alt="The Gardenia Luxury Villa Koh Tao, a 3-story home with 5 bedrooms and 3 bathrooms accommodating 10 guests. The design integrates natural granite boulders and tropical plants, featuring a private pool and sea views.">
+          <picture style="display: contents;">
+            <source media="(max-width: 768px)" srcset="/media/images/hero-images/gardenia-villa-hero-mobile.webp">
+            <source media="(min-width: 769px)" srcset="/media/images/hero-images/gardenia-villa-hero.webp">
+            <img class="slide-image" width="822" height="507" loading="lazy" src="/media/images/hero-images/gardenia-villa-hero.webp" alt="The Gardenia Luxury Villa Koh Tao, a 3-story home with 5 bedrooms and 3 bathrooms accommodating 10 guests. The design integrates natural granite boulders and tropical plants, featuring a private pool and sea views.">
+          </picture>
           <div class="dimmer" aria-hidden="true"></div>
           
           <div class="slide-content">
@@ -234,7 +248,11 @@
     <section aria-label="Our Villas">
       <div class="slides-container">
         <div class="slide" id="bougainvillea-villa-slide">
-          <img class="slide-image" width="900" height="600" loading="lazy" src="/media/images/hero-images/bougainvillea-villa-hero.webp" alt="Bougainvillea Private Villa in Koh Tao surrounded by excellent greenery. Features 2 bedrooms plus a loft, 1 bathroom, and a private pool with a rock waterfall, accommodating up to 6 guests.">
+          <picture style="display: contents;">
+            <source media="(max-width: 768px)" srcset="/media/images/hero-images/bougainvillea-villa-hero-mobile.webp">
+            <source media="(min-width: 769px)" srcset="/media/images/hero-images/bougainvillea-villa-hero.webp">
+            <img class="slide-image" width="900" height="600" loading="lazy" src="/media/images/hero-images/bougainvillea-villa-hero.webp" alt="Bougainvillea Private Villa in Koh Tao surrounded by excellent greenery. Features 2 bedrooms plus a loft, 1 bathroom, and a private pool with a rock waterfall, accommodating up to 6 guests.">
+          </picture>
           <div class="dimmer" aria-hidden="true"></div>
           
           <div class="slide-content">
