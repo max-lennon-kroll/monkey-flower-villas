@@ -26,6 +26,9 @@
   <meta property="twitter:image" content="https://kotaovilla.com/media/images/scenery/entire-luxury-resort-drone-shot.webp" />
   
   
+  <link rel="preload" href="/styles/style.css" as="style">
+  <link rel="preload" href="/media/fonts/Lexend/Lexend-VariableFont_wght.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="preload" href="/media/fonts/Manufacturing_Consent/ManufacturingConsent-Regular.ttf" as="font" type="font/ttf" crossorigin>
   <link rel="stylesheet" href="/styles/style.css">
   
 
@@ -49,7 +52,7 @@
   }
   </script>
 
-  <link rel="preload" as="image" href="/media/images/scenery/entire-luxury-resort-drone-shot.webp">
+  <link rel="preload" as="image" href="/media/images/scenery/entire-luxury-resort-drone-shot.webp" fetchpriority="high">
 
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-D87H9ECPYQ"></script>
   <script>
@@ -143,8 +146,8 @@
           </div>
 
           
-          <video id="hero-video" class="slide-video" width="1920" height="1080" autoplay loop muted playsinline preload="metadata" poster="/media/images/scenery/entire-luxury-resort-drone-shot.webp">
-            <source src="/media/videos/homepage/trailer-mobile.mp4" media="(max-width: 768px)">
+          <video id="hero-video" class="slide-video" width="1920" height="1080" autoplay loop muted playsinline preload="auto" poster="/media/images/scenery/entire-luxury-resort-drone-shot.webp">
+            <source src="/media/videos/homepage/trailer-mobile.mp4" type="video/mp4" media="(max-width: 768px)">
             <source src="/media/videos/homepage/trailer.mp4" type="video/mp4">
           </video>
         
