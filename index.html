@@ -3,6 +3,8 @@
 
 <head>
   <meta charset="UTF-8" />
+  <link rel="preload" as="image" href="/media/images/scenery/entire-luxury-resort-drone-shot.webp" media="(min-width: 769px)" fetchpriority="high">
+  <link rel="preload" as="image" href="/media/images/scenery/entire-luxury-resort-drone-shot-mobile.webp" media="(max-width: 768px)" fetchpriority="high">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Monkey Flower Villas | Luxury Private Pool Villas in Koh Tao, Thailand</title>
   <link rel="icon" type="image/webp" href="/media/images/logos/monkey-flower-villas-logo-mini.webp" />
@@ -26,9 +28,9 @@
   <meta property="twitter:image" content="https://kotaovilla.com/media/images/scenery/entire-luxury-resort-drone-shot.webp" />
   
   
-  <link rel="preload" href="/styles/style.css" as="style">
   <link rel="preload" href="/media/fonts/Lexend/Lexend-VariableFont_wght.ttf" as="font" type="font/ttf" crossorigin>
   <link rel="preload" href="/media/fonts/Manufacturing_Consent/ManufacturingConsent-Regular.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="preload" href="/styles/style.css" as="style">
   <link rel="stylesheet" href="/styles/style.css">
   
 
@@ -52,15 +54,11 @@
   }
   </script>
 
-  <link rel="preload" as="image" href="/media/images/scenery/entire-luxury-resort-drone-shot.webp" media="(min-width: 769px)" fetchpriority="high">
-  <link rel="preload" as="image" href="/media/images/scenery/entire-luxury-resort-drone-shot-mobile.webp" media="(max-width: 768px)" fetchpriority="high">
-
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-D87H9ECPYQ"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
     gtag('config', 'G-D87H9ECPYQ');
   </script>
 </head>
@@ -152,7 +150,7 @@
             <source media="(min-width: 769px)" srcset="/media/images/scenery/entire-luxury-resort-drone-shot.webp">
             <img src="/media/images/scenery/entire-luxury-resort-drone-shot.webp" alt="Monkey Flower Villas Aerial View" width="1920" height="1080" fetchpriority="high" style="object-fit: cover; width: 100%; height: 100%;">
           </picture>
-          <video id="hero-video" class="slide-video desktop-only" width="1920" height="1080" autoplay loop muted playsinline preload="auto">
+          <video id="hero-video" class="slide-video desktop-only" width="1920" height="1080" loop muted playsinline preload="none">
             <source src="/media/videos/homepage/trailer.mp4" type="video/mp4" media="(min-width: 769px)">
           </video>
           <style>
@@ -160,6 +158,18 @@
               .desktop-only { display: none !important; }
             }
           </style>
+          <script defer>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.innerWidth >= 769) {
+        const video = document.getElementById('hero-video');
+        if (video) {
+          video.autoplay = true;
+          video.preload = "auto";
+        }
+      }
+    });
+  </script>
+
         
           <a class="slide-button" href="/booking.html">Book Now</a>
         </div>
@@ -187,7 +197,7 @@
     <section aria-label="Our Villas">
       <div class="slides-container">
         <div class="slide" id="orchid-villa-slide">
-          <img class="slide-image" width="1024" height="768" loading="lazy" src="/media/images/homepage/orchid-villa-background.webp" alt="Exterior of the Orchid Luxury Villa in Koh Tao featuring 3 bedrooms and 2 bathrooms. The image shows the award-winning infinity pool overlooking the ocean, surrounded by lush jungle greenery.">
+          <img class="slide-image" width="1024" height="768"  data-src="/media/images/homepage/orchid-villa-background.webp" alt="Exterior of the Orchid Luxury Villa in Koh Tao featuring 3 bedrooms and 2 bathrooms. The image shows the award-winning infinity pool overlooking the ocean, surrounded by lush jungle greenery.">
           
           <div class="slide-content">
             <h2 class="slide-header">Orchid Villa</h2>
@@ -215,10 +225,10 @@
     <section aria-label="Our Villas">
       <div class="slides-container">
         <div class="slide" id="gardenia-villa-slide">
-          <picture style="display: contents;">
-            <source media="(max-width: 768px)" srcset="/media/images/hero-images/gardenia-villa-hero-mobile.webp">
-            <source media="(min-width: 769px)" srcset="/media/images/hero-images/gardenia-villa-hero.webp">
-            <img class="slide-image" width="822" height="507" loading="lazy" src="/media/images/hero-images/gardenia-villa-hero.webp" alt="The Gardenia Luxury Villa Koh Tao, a 3-story home with 5 bedrooms and 3 bathrooms accommodating 10 guests. The design integrates natural granite boulders and tropical plants, featuring a private pool and sea views.">
+          <picture class="lazy-picture" style="display: contents;">
+            <source media="(max-width: 768px)" data-srcset="/media/images/hero-images/gardenia-villa-hero-mobile.webp">
+            <source media="(min-width: 769px)" data-srcset="/media/images/hero-images/gardenia-villa-hero.webp">
+            <img class="slide-image" width="822" height="507"  data-src="/media/images/hero-images/gardenia-villa-hero.webp" alt="The Gardenia Luxury Villa Koh Tao, a 3-story home with 5 bedrooms and 3 bathrooms accommodating 10 guests. The design integrates natural granite boulders and tropical plants, featuring a private pool and sea views.">
           </picture>
           <div class="dimmer" aria-hidden="true"></div>
           
@@ -248,10 +258,10 @@
     <section aria-label="Our Villas">
       <div class="slides-container">
         <div class="slide" id="bougainvillea-villa-slide">
-          <picture style="display: contents;">
-            <source media="(max-width: 768px)" srcset="/media/images/hero-images/bougainvillea-villa-hero-mobile.webp">
-            <source media="(min-width: 769px)" srcset="/media/images/hero-images/bougainvillea-villa-hero.webp">
-            <img class="slide-image" width="900" height="600" loading="lazy" src="/media/images/hero-images/bougainvillea-villa-hero.webp" alt="Bougainvillea Private Villa in Koh Tao surrounded by excellent greenery. Features 2 bedrooms plus a loft, 1 bathroom, and a private pool with a rock waterfall, accommodating up to 6 guests.">
+          <picture class="lazy-picture" style="display: contents;">
+            <source media="(max-width: 768px)" data-srcset="/media/images/hero-images/bougainvillea-villa-hero-mobile.webp">
+            <source media="(min-width: 769px)" data-srcset="/media/images/hero-images/bougainvillea-villa-hero.webp">
+            <img class="slide-image" width="900" height="600"  data-src="/media/images/hero-images/bougainvillea-villa-hero.webp" alt="Bougainvillea Private Villa in Koh Tao surrounded by excellent greenery. Features 2 bedrooms plus a loft, 1 bathroom, and a private pool with a rock waterfall, accommodating up to 6 guests.">
           </picture>
           <div class="dimmer" aria-hidden="true"></div>
           
@@ -282,7 +292,7 @@
       <div class="slides-container">
         <div class="slide" style="background-color: #111">
 
-          <img class="slide-image" width="400" height="260" loading="lazy" src="/media/images/homepage/gallery-background.webp" alt="Preview of luxury villa photo gallery showing pools, nature, and ocean views in Koh Tao.">
+          <img class="slide-image" width="400" height="260"  data-src="/media/images/homepage/gallery-background.webp" alt="Preview of luxury villa photo gallery showing pools, nature, and ocean views in Koh Tao.">
 
           <div class="slide-content">
             <h2 class="slide-header">Gallery</h2>
@@ -305,7 +315,7 @@
       <div class="slides-container">
         <div class="slide" style="background-color: #111">
 
-          <img class="slide-image" loading="lazy" src="/media/images/homepage/orchid-villa-living-room.webp" alt="Interior of a luxury Koh Tao villa living room with large windows showcasing the tropical greenery and ocean views. Features stylish furniture and nature-inspired architecture." width="2048" height="1365">
+          <img class="slide-image"  data-src="/media/images/homepage/orchid-villa-living-room.webp" alt="Interior of a luxury Koh Tao villa living room with large windows showcasing the tropical greenery and ocean views. Features stylish furniture and nature-inspired architecture." width="2048" height="1365">
 
           <div class="slide-content">
             <h2 class="slide-header">Amenities</h2>
@@ -363,7 +373,7 @@
       <div class="slides-container">
         <div class="slide" style="background-color: #000000">
 
-          <img class="slide-image" width="900" height="675" loading="lazy" src="/media/images/scenery/sairee-beach-sunset.webp" alt="A beautiful view of Sairee beach, mere minutes away from Monkey Flower Villas. Showcases one of many activties on Koh Tao that Monkey Flower Villas is able to facilitate.">
+          <img class="slide-image" width="900" height="675"  data-src="/media/images/scenery/sairee-beach-sunset.webp" alt="A beautiful view of Sairee beach, mere minutes away from Monkey Flower Villas. Showcases one of many activties on Koh Tao that Monkey Flower Villas is able to facilitate.">
 
           <div class="slide-content">
             <h2 class="slide-header">Activities</h2>
@@ -513,7 +523,7 @@
 
   </main>
 
-  <script src="/scripts/script.js" defer></script>
+  <script src="/scripts/script.js"></script>
 
   <noscript>
     <div style="background-color: yellow; padding: 10px; border: 1px solid orange; text-align: center; z-index: 999;">

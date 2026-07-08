@@ -255,31 +255,77 @@ function initializeReviews() {
 
 function initializeLazyLoading() {
   const elements = document.querySelectorAll('.lazy-loading');
+  const allLazyMedia = Array.from(document.querySelectorAll('img[data-src], picture.lazy-picture'));
+  
+  const slidesToObserve = new Set();
+  const standaloneMedia = [];
+  
+  allLazyMedia.forEach(media => {
+    const slide = media.closest('.slide');
+    if (slide) {
+      slidesToObserve.add(slide);
+    } else {
+      standaloneMedia.push(media);
+    }
+  });
+  
+  if (!elements.length && !slidesToObserve.size && !standaloneMedia.length) return;
 
-  if (!elements.length) return;
+  const loadMedia = (el) => {
+    const bg = el.dataset.bg;
+    if (bg) {
+      el.style.backgroundImage = `url("${bg}")`;
+      el.classList.remove('lazy-loading');
+    }
+    
+    if (el.tagName === 'PICTURE') {
+      const sources = el.querySelectorAll('source[data-srcset]');
+      sources.forEach(source => {
+        source.srcset = source.dataset.srcset;
+        source.removeAttribute('data-srcset');
+      });
+      const img = el.querySelector('img[data-src]');
+      if (img) {
+        img.src = img.dataset.src;
+        img.removeAttribute('data-src');
+      }
+    } else if (el.tagName === 'IMG') {
+      const src = el.dataset.src;
+      if (src) {
+        el.src = src;
+        const srcset = el.dataset.srcset;
+        if (srcset) {
+          el.srcset = srcset;
+        }
+        el.removeAttribute('data-src');
+        el.removeAttribute('data-srcset');
+      }
+    }
+  };
 
   const observer = new IntersectionObserver((entries, obs) => {
     entries.forEach(entry => {
       if (!entry.isIntersecting) return;
-
+      
       const el = entry.target;
-      const bg = el.dataset.bg;
-
-      if (bg) {
-        el.style.backgroundImage = `url("${bg}")`;
+      
+      if (el.classList.contains('slide')) {
+        const lazyMedia = el.querySelectorAll('img[data-src], picture.lazy-picture');
+        lazyMedia.forEach(media => loadMedia(media));
+      } else {
+        loadMedia(el);
       }
 
-      el.classList.remove('lazy-loading');
       obs.unobserve(el);
     });
   }, {
-    rootMargin: "500px 0px"
+    rootMargin: "50% 50%"
   });
 
   elements.forEach(el => observer.observe(el));
+  slidesToObserve.forEach(el => observer.observe(el));
+  standaloneMedia.forEach(el => observer.observe(el));
 }
-
-
 
 const lightbox = document.getElementById("lightbox");
 const lightboxImg = document.getElementById("lightbox-img");
