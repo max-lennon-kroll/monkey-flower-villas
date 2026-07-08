@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Page Not Found | Monkey Flower Villas</title>
   <meta name="description" content="The page you are looking for does not exist. Return to Monkey Flower Villas Koh Tao homepage.">
-  <link rel="stylesheet" href="/styles/style.css">
+  <link rel="preload" href="/styles/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="/styles/style.css"></noscript>
   <style>
     body {
       margin: 0;
@@ -66,7 +67,7 @@
 <body>
   <div class="error-container">
     <h1>Error 404</h1>
-    <p>It seems the page you were looking for doesn't exist. Please visit our homepage by clicking <a href="/">here</a>.</p>
+    <p>It looks like the page you were looking for doesn't exist. Please visit our homepage by clicking <a href="/">here</a>.</p>
   </div>
 </body>
 </html>

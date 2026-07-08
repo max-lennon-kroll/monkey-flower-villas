@@ -6,6 +6,7 @@
   src: url('/media/fonts/Lexend/Lexend-VariableFont_wght.ttf') format('truetype');
   font-weight: 100 900;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -13,6 +14,7 @@
   src: url('/media/fonts/Manufacturing_Consent/ManufacturingConsent-Regular.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
+  font-display: swap;
 }
 
 :root {
@@ -480,7 +482,7 @@ section {
 
 .slide.textured,
 .long-slide.textured {
-  background-image: url(/media/images/textures/fabric.png);
+  background-image: url(/media/images/textures/fabric.webp);
   background-attachment: fixed;
 }
 

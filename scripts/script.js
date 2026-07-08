@@ -170,6 +170,8 @@ function initializeSlideNavigation() {
       btn.className = `nav-arrow ${cls} hidden`;
       btn.innerHTML = svg;
       btn.setAttribute('aria-label', label);
+      btn.setAttribute('role', 'button');
+      btn.setAttribute('tabindex', '0');
       return btn;
     };
 
@@ -279,9 +281,11 @@ document.querySelectorAll(".zoomable").forEach(img => {
   });
 });
 
-lightbox.addEventListener("click", () => {
-  lightbox.style.display = "none";
-});
+if (lightbox) {
+  lightbox.addEventListener("click", () => {
+    lightbox.style.display = "none";
+  });
+}
 
 document.addEventListener('click', function(e) {
     let target = e.target.closest('button, a.slide-button, a.slide-button-inverted, a.slide-button-2, a.popup-button, a.nav-menu-booking, a.gallery-redirect-button, a.footer-booking-button');
